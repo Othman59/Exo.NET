@@ -1,7 +1,7 @@
 ﻿
 // 1 Écrire un programme qui vérifie si un nombre donné est supérieur à 10.
 
-Console.WriteLine("Entrez un nombre: ");
+/*Console.WriteLine("Entrez un nombre: ");
 string input = Console.ReadLine();
 
 if (int.TryParse(input, out int nombre))
@@ -252,6 +252,320 @@ else
     Console.WriteLine("Âge invalide. Veuillez entrer un nombre entier positif.");
 }
 
+//13 Créer un programme qui vérifie si une année est bissextile ou non.
+
+Console.Write("Entrez une année : ");
+string saisie = Console.ReadLine();
+
+if (int.TryParse(saisie, out int annee) && annee > 0)
+{
+    if ((annee % 4 = 0 && annee % 100 != 0) || (annee % 400 = 0))
+    {
+        Console.WriteLine($"{annee} est une année bissextile.");
+    }
+    else
+    {
+        Console.WriteLine($"{annee} n'est pas une année bissextile.");
+    }
+}
+else
+{
+    Console.WriteLine("Entrée invalide. Veuillez entrer une année positive.");
+}
+
+//14 Vérifier si un nombre est positif et multiple de 5.
+
+Console.Write("Entrez un nombre : ");
+string? v1 = Console.ReadLine();
+
+if (int.TryParse(saisie, out int nombre5))
+{
+    if (nombre > 0 && nombre % 5 == 0) //Il vérifie qu’il est un multiple de 5.
+       //Il vérifie que le nombre est positif
+
+    {
+        Console.WriteLine("Le nombre est multiple par 5.");
+    }
+    else
+    {
+        Console.WriteLine("Le nombre n'est multiple par 5.");
+    }
+}
+
+//15 Écrire un programme qui vérifie si une chaîne de caractères contient la lettre 'a'.
+
+Console.Write("Entrez une chaîne de caractères : ");
+string saisie = Console.ReadLine();
+
+if (!string.IsNullOrEmpty(saisie))
+{
+    if (saisie.Contains('a'))
+    {
+        Console.WriteLine("La chaîne contient la lettre 'a'.");
+    }
+    else
+    {
+        Console.WriteLine("La chaîne ne contient pas la lettre 'a'.");
+    }
+}
+else
+{
+    Console.WriteLine("Chaîne vide ou invalide.");
+}
+
+
+16//Vérifier si un nombre est divisible à la fois par 2 et par 3, mais pas par 9.
+
+    Console.Write("Entrez un nombre : ");
+int nombre = Convert.ToInt32(Console.ReadLine());
+
+if (nombre % 2 == 0 && nombre % 3 == 0 && nombre % 9 != 0)
+{
+    Console.WriteLine("Le nombre est divisible par 2 et par 3, mais pas par 9.");
+}
+else
+{
+    Console.WriteLine("Le nombre ne remplit pas les conditions.");
+}
+
+17//Demander à l'utilisateur un nom d'utilisateur et un mot de passe, et vérifier si les deux sont corrects.
+
+Console.Write("Nom d'utilisateur : ");
+string nomUtilisateur = Console.ReadLine();
+
+Console.Write("Mot de passe : ");
+string motDePasse = Console.ReadLine();
+
+if (nomUtilisateur == utilisateurCorrect && motDePasse == motDePasseCorrect)
+{
+    Console.WriteLine("Connexion réussie !");
+}
+else
+{
+    Console.WriteLine("Nom d'utilisateur ou mot de passe incorrect.");
+}
+
+18//Créer un programme qui vérifie si une chaîne de caractères est un palindrome.
+
+Console.Write("Entrez une chaîne de caractères : ");
+string saisie = Console.ReadLine();
+
+if (!string.IsNullOrEmpty(saisie))
+{
+    string original = saisie.ToLower().Replace(" ", ""); 
+    char[] tableau = original.ToCharArray();
+    Array.Reverse(tableau);
+    string inverse = new string(tableau);
+
+    if (original == inverse)
+    {
+        Console.WriteLine("La chaîne est un palindrome.");
+    }
+    else
+    {
+        Console.WriteLine("La chaîne n'est pas un palindrome.");
+    }
+}
+else
+{
+    Console.WriteLine("Chaîne vide ou invalide.");
+}
+
+19//Écrire un programme qui vérifie si un nombre est à la fois positif, pair et supérieur à 100.
+
+Console.Write("Entrez une chaîne de caractères : ");
+string saisie = Console.ReadLine();
+
+if (!string.IsNullOrEmpty(saisie))
+{
+    string original = saisie.ToLower().Replace(" ", ""); // ignore casse et espaces
+    char[] tableau = original.ToCharArray();
+    Array.Reverse(tableau);
+    string inverse = new string(tableau);
+
+    if (original == inverse)
+    {
+        Console.WriteLine("La chaîne est un palindrome.");
+    }
+    else
+    {
+        Console.WriteLine("La chaîne n'est pas un palindrome.");
+    }
+}
+else
+{
+    Console.WriteLine("Chaîne vide ou invalide.");
+}
+
+21//Afficher les nombres de 1 à 10 avec une boucle `for`
+
+for (int i = 1; i <= 10; i++)
+    //condition pour continuer la boucle jusqu'à 10
+
+{
+    Console.WriteLine(i);
+}
+    }
+
+22//Afficher les nombres pairs entre 1 et 20
+
+    Console.WriteLine("Nombres pairs entre 1 et 20 :");
+for (int i = 1; i <= 20; i++)
+{
+    if (i % 2 == 0)
+    {
+        Console.WriteLine(i);
+    }
+
+23//Utiliser une boucle pour afficher chaque élément d'un tableau
+        
+        // Déclarer un tableau
+      string[] voiture = { "Mercedes", "Bmw", "Mclaren", "Ferrari", "Audi" };
+    
+    // Afficher chaque élément du tableau
+    for (int i = 0; i < voiture.Length; i++)
+                        (donne le nombre d)
+    {
+        Console.WriteLine(voiture[i]);
+    }
+}
+
+//24 Demander à l'utilisateur un nombre de 1 à 10 et afficher la table de multiplication.
+
+Console.Write("Entrez un nombre entre 1 et 10 : ");
+string saisie = Console.ReadLine();
+
+if (int.TryParse(saisie, out int nombre) && nombre >= 1 && nombre <= 10)
+{
+    Console.WriteLine($"\nTable de multiplication de {nombre} :");
+    for (int i = 1; i <= 10; i++)
+    {
+        Console.WriteLine($"{nombre} x {i} = {nombre * i}");
+    }
+}
+else
+{
+    Console.WriteLine("Entrée invalide. Veuillez entrer un nombre entre 1 et 10.");
+}
+
+//25 Afficher les éléments d'une chaîne de caractères un par un.
+
+Console.Write("Entrez une chaîne de caractères : ");
+string texte = Console.ReadLine();
+
+if (!string.IsNullOrEmpty(texte))
+{
+    Console.WriteLine("\nCaractères un par un :");
+    foreach (char caractere in texte)
+    {
+        Console.WriteLine(caractere);
+    }
+}
+else
+{
+    Console.WriteLine("Chaîne vide ou invalide.");
+}
+
+//26 Utiliser une boucle pour afficher les nombres de 0 à 100 avec un pas de 10.
+
+Console.WriteLine("Affichage des nombres de 0 à 100 avec un pas de 10 :");
+
+for (int i = 0; i <= 100; i += 10)
+{
+    Console.WriteLine(i);
+}
+    }
+
+//27 Afficher les éléments d'une liste avec leurs indices.
+
+List<string> couleurs = new List<string> { "Rouge", "Vert", "Bleu", "Jaune" };
+
+Console.WriteLine("Liste des couleurs avec leurs indices :\n");
+
+for (int i = 0; i < couleurs.Count; i++)
+{
+    Console.WriteLine($"Indice {i} : {couleurs[i]}");
+}
+*/
+//28 Afficher les nombres de 10 à 1 en ordre décroissant avec une boucle.
+
+
+//29 Créer une boucle qui calcule la somme des nombres de 1 à 50
+
+
+//30 Utiliser une boucle pour afficher les 5 premières lettres de l'alphabet.
+
+
+
+//Exo 5 
+
+//Ce que le programme fait 
+
+/*Console.WriteLine("Gestion des notes");
+Console.WriteLine("Veuillez saisir 5 notes :");
+
+//Déclarer les variables
+
+int[] notes = new int[5];
+int somme = 0;
+
+for (int i = 0; i < 5; i++)
+{
+    Console.Write($" - Merci de saisir la note {i + 1} (sur /20) : ");
+
+    while (!int.TryParse(Console.ReadLine(), out notes[i]) || notes[i] < 0 || notes[i] > 20)
+    {
+        Console.WriteLine("   Veuillez entrer une note valide (entre 0 et 20) : ");
+    }
+    somme += notes[i];
+}
+
+int meilleure = notes[0];
+int pire = notes[0];
+
+double moyenne = (double)somme / notes.Length;
+
+//Vérifie que chaque note est bien entre 0 & 20
+
+//Résultat
+
+    Console.WriteLine();
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"\nla meilleure note est {meilleure}/20");
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine($"la moins bonne note est {pire}/20");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine($"la moyenne des notes est {moyenne:F1}/20");
+    Console.WriteLine("\nAppuyez sur Entrer pour fermer le programme...");
+    Console.ReadLine();
+
+    }
+}*/
+
+//Exo7
+
+Console.WriteLine("--- Trouver le nombre mystère ---\n");
+
+Random random = new Random();
+int nombreMystere = random.Next(1, 51); // entre 1 et 50 inclus
+int tentative;
+int coups = 0;
+
+Console.Write("Veuillez saisir un nombre : ");
+string saisie = Console.ReadLine();
+coups++;
+
+if (!int.TryParse(saisie, out tentative) || tentative < 1 || tentative > 50)
+{
+    Console.WriteLine("Veuillez entrer un nombre entre 1 et 50.");
+}
+
+if (tentative < nombreMystere)
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("Le nombre mystère est plus grand\n");
+}
+else if (tentative > nombreMystere)
 
 
 
