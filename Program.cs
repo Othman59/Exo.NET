@@ -493,9 +493,6 @@ for (int i = 0; i < couleurs.Count; i++)
 //29 Créer une boucle qui calcule la somme des nombres de 1 à 50
 
 
-//30 Utiliser une boucle pour afficher les 5 premières lettres de l'alphabet.
-
-
 
 //Exo 5 
 
@@ -544,30 +541,458 @@ double moyenne = (double)somme / notes.Length;
 
 //Exo7
 
-Console.WriteLine("--- Trouver le nombre mystère ---\n");
+/*Console.WriteLine("Trouver le nombre mystère ---\n");
 
 Random random = new Random();
 int nombreMystere = random.Next(1, 51); // entre 1 et 50 inclus
-int tentative;
+int tentative = 0;
 int coups = 0;
 
-Console.Write("Veuillez saisir un nombre : ");
-string saisie = Console.ReadLine();
-coups++;
-
-if (!int.TryParse(saisie, out tentative) || tentative < 1 || tentative > 50)
+do
 {
-    Console.WriteLine("Veuillez entrer un nombre entre 1 et 50.");
-}
+    Console.Write("Veuillez saisir un nombre entre 1 et 50 : ");
+    object console = null;
+    string saisie = Console.ReadLine();
 
-if (tentative < nombreMystere)
+    if (!int.TryParse(saisie, out tentative) || tentative < 1 || tentative > 50)
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("Entrée invalide. Veuillez entrer un nombre entre 1 et 50.\n");
+        Console.ResetColor();
+        continue;
+    }
+
+    coups++;
+
+    if (tentative < nombreMystere)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Le nombre mystère est plus grand.\n");
+    }
+    else if (tentative > nombreMystere)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Le nombre mystère est plus petit.\n");
+    }
+
+    Console.ResetColor();
+
+} while (tentative != nombreMystere);
+
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine($"\nBravo ! Vous avez trouvé le nombre mystère ({nombreMystere}) en {coups} coup(s).");
+Console.ResetColor();*/
+
+
+//Exo 8 
+
+// Saisie utilisateur
+/*Console.Write("Entrez votre taille en cm : ");
+int taille = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Entrez votre poids en kg : ");
+int poids = Convert.ToInt32(Console.ReadLine());
+
+// Détermination de la taille
+string tailleVetement = GetTailleVetement(taille, poids);
+
+// Affichage du résultat
+if (tailleVetement != null)
+{
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"\nVotre taille de vêtement est : {tailleVetement}");
+}
+else
 {
     Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Le nombre mystère est plus grand\n");
+    Console.WriteLine("\nAucune taille ne vous correspond.");
 }
-else if (tentative > nombreMystere)
+
+Console.ResetColor();
+
+    static string GetTailleVetement(int taille, int poids)
+{
+    // Taille 1
+    if ((taille >= 151 && taille <= 163) && (poids >= 48 && poids <= 53))
+        return "1";
+    if ((taille >= 151 && taille <= 160) && (poids >= 54 && poids <= 59))
+        return "1";
+
+    // Taille 2
+    if ((taille >= 160 && taille <= 169) && (poids >= 54 && poids <= 65))
+        return "2";
+    if ((taille >= 163 && taille <= 172) && (poids >= 60 && poids <= 65))
+        return "2";
+
+    // Taille 3
+    if ((taille >= 166 && taille <= 183) && (poids >= 66 && poids <= 71))
+        return "3";
+    if ((taille >= 169 && taille <= 175) && (poids >= 72 && poids <= 77))
+        return "3";
+
+    // Si aucune correspondance
+    return null;
+}
+
+//Exo 9
+
+Console.Write("saisie la meilleure moyenne");
+int moyenne = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Entrez votre poids en kg : ");
+int note = Convert.ToInt32(Console.ReadLine());
+
+// Détermination de la moyenne
+string meilleureMoyenne = GetTailleVetement(taille, poids);
+
+//Exo 9
+
+int choix;
+
+do
+{
+    Console.Clear();
+    Console.WriteLine("--- Menu - Gestion des Notes ---");
+    Console.WriteLine("1. Saisir des notes");
+    Console.WriteLine("0. Quitter");
+    Console.Write("\nVotre choix : ");
+
+    if (!int.TryParse(Console.ReadLine(), out choix))
+    {
+        choix = -1;
+    }
+
+    switch (choix)
+    {
+        case 1:
+            Console.Clear();
+            SaisirEtAnalyserNotes();
+            break;
+
+        case 0:
+            Console.WriteLine("\nFermeture du programme...");
+            Environment.Exit(0);
+            break;
+
+        default:
+            Console.WriteLine("Choix invalide. Appuyez sur Entrée pour continuer.");
+            Console.ReadLine();
+            break;
+    }
+
+} while (true);
+
+    static void SaisirEtAnalyserNotes()
+{
+    List<int> notes = new List<int>();
+    string saisie;
+    int note;
+
+    Console.WriteLine("--- Saisie des notes ---");
+    Console.WriteLine("Entrez vos notes sur 20 (tapez 0 pour terminer) :\n");
+
+    do
+    {
+        Console.Write("Note : ");
+        saisie = Console.ReadLine();
+
+        if (int.TryParse(saisie, out note))
+        {
+            if (note == 0) break;
+
+            if (note >= 1 && note <= 20)
+            {
+                notes.Add(note);
+            }
+            else
+            {
+                Console.WriteLine("Note invalide. Entrez un nombre entre 1 et 20.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Veuillez entrer une valeur numérique valide.");
+        }
+
+    } while (true);
+
+    Console.Clear();
+
+    if (notes.Count == 0)
+    {
+        Console.WriteLine("Aucune note saisie.\nAppuyez sur Entrée pour revenir au menu...");
+        Console.ReadLine();
+        return;
+    }
+
+    int meilleure = notes[0];
+    int pire = notes[0];
+    int somme = 0;
+
+    foreach (int n in notes)
+    {
+        if (n > meilleure) meilleure = n;
+        if (n < pire) pire = n;
+        somme += n;
+    }
+
+    double moyenne = (double)somme / notes.Count;
+
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"✅ Meilleure note : {meilleure}/20");
+
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine($"❌ Moins bonne note : {pire}/20");
+
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine($"📊 Moyenne : {moyenne:F1}/20");
+
+    Console.ResetColor();
+    Console.WriteLine("\nAppuyez sur Entrée pour revenir au menu...");
+    Console.ReadLine();
+}*/
+
+
+//Exo 1
+
+/* Dans `Main`, déclarez un tableau `notes` contenant : `{ 10, 12, 15, 8 }`.
+Calculez et affichez sa moyenne.
+Prévoyez aussi le cas où le tableau serait vide.*/
+
+/*class Program
+{
+    private static double sum;
+
+    static void Main(string[] args)
+    {
+        // Déclaration et initialisation du tableau de notes
+        int[] notes = { 10, 12, 15, 8 };
+
+        // Verifie si le tableau est vide 
+        for (int i = 0; i < notes.Length; i++)
+        {
+            Console.WriteLine("Le tableau de notes est vide.");
+
+                {
+                    int sum = 0;
+                    //Parcour chaque note du tableau 
+                    foreach (int note in notes)
+                    {
+                        sum += note;
+                    }
+
+                    double average = (double)sum / notes.Length;
+                    Console.WriteLine("La moyenne des notes est : {average:F1}/20");
+                }
+
+                Console.WriteLine("\nAppuyez sur Entrée pour quitter...");
+                Console.ReadLine();
+            }
+        }
+
+    }
+*/
+//Exo 3 
+
+/*class Program
+
+    private static double sum;
+
+static void Main(string[] args)
+
+// Liste pour stocker les prénoms saisis
+        List<string> prenoms = new List<string>();
+
+Console.Write("Combien de prénoms souhaitez-vous saisir ? ");
+int n;
+
+// Lecture du nombre de prénoms à saisir
+while (!int.TryParse(Console.ReadLine(), out n) || n < 1)
+{
+    Console.Write("Veuillez entrer un nombre valide (≥ 1) : ");
+
+    // Saisie des prénoms
+    for (int i = 0; i < n; i++)
+    {
+        Console.Write($"Entrez le prénom #{i + 1} : ");
+        string prenom = Console.ReadLine();
+        prenoms.Add(prenom);
+    }
+}*/
+
+//Exo 4
+
+// Dictionnaire pour stocker les couples pays / capitale
+
+/*Dictionary<string, string> paysCapitales = new Dictionary<string, string>();
+Console.WriteLine("=== Saisie des couples pays / capitale ===");
+Console.WriteLine("Tapez \"fin\" comme nom de pays pour arrêter la saisie.\n");
+
+string pays, capital;
+
+while (true) ;
+
+//Demandez le pays
+
+Console.WriteLine("pays: ");
+pays = Console.ReadLine();
+
+// Vérifie si l'utilisateur veut arrêter
+if (pays.ToLower() == "fin")
+{
+
+    // Demande de la capitale
+    Console.Write("Capitale : ");
+    capital = Console.ReadLine();
+
+    // Ajoute au dictionnaire
+    if (!paysCapitales.ContainsKey(pays))
+    {
+        string capitale = null;
+        paysCapitales[pays] = capitale;
+    }
+    else
+    {
+        Console.WriteLine("Ce pays a déjà été saisi. Valeur mise à jour.");
+        string capitale = null;
+        paysCapitales[pays] = capitale;
+        Console.WriteLine("\nAppuyez sur Entrée pour quitter.");
+        Console.ReadLine();
+        capital = Console.ReadLine();
 
 
 
+        Console.Clear();
+        // Affichage du menu
+        Console.WriteLine("=== MENU ===");
+        Console.WriteLine("1. Ajouter un pays et sa capitale");
+        Console.WriteLine("2. Afficher tous les pays et capitales");
+        Console.WriteLine("3. Chercher la capitale d’un pays");
+        Console.WriteLine("0. Quitter");
+        Console.Write("\nVotre choix : ");
 
 
+        int choix;
+        if (!int.TryParse(Console.ReadLine(), out choix))
+        {
+            choix = 1;
+        }
+
+        switch (choix)
+        {
+
+            case 1:
+                Console.Clear();
+                AjouterPaysCapitale(paysCapitales);
+                break;
+
+            case 2:
+                Console.Clear();
+                AfficherPaysEtCapitales(paysCapitales);
+                break;
+
+            case 3:
+                Console.Clear();
+                ChercherCapitale(paysCapitales);
+                break;
+
+            case 0:
+                Console.WriteLine("\nFermeture du programme...");
+                Environment.Exit(0);
+                break;
+
+            default:
+                Console.WriteLine("❌ Choix invalide. Appuyez sur Entrée pour continuer...");
+                Console.ReadLine();
+                break;
+        }
+
+    }
+}
+static void AjouterPaysCapitale(Dictionary<string, string> dico)
+{
+    Console.Clear();
+    Console.WriteLine("=== Ajouter un couple pays / capitale ===");
+    Console.Write("Pays : ");
+    string pays = Console.ReadLine();
+
+    Console.Write("Capitale : ");
+    string capitale = Console.ReadLine();
+
+    if (!dico.ContainsKey(pays))
+    {
+        dico[pays] = capitale;
+        Console.WriteLine("✅ Ajouté avec succès !");
+    }
+    else
+    {
+        Console.WriteLine("Ce pays existe déjà. Capitale mise à jour.");
+        dico[pays] = capitale;
+    }
+
+    Console.WriteLine("\nAppuyez sur Entrée pour revenir au menu...");
+    Console.ReadLine();
+}
+
+static void AfficherPaysEtCapitales(Dictionary<string, string> dico)
+{
+    Console.Clear();
+    Console.WriteLine("=== Liste des pays et capitales ===");
+
+    if (dico.Count == 0)
+    {
+        Console.WriteLine("Aucun pays enregistré.");
+    }
+    else
+    {
+        foreach (var couple in dico)
+        {
+            Console.WriteLine($"{couple.Key} → {couple.Value}");
+        }
+    }
+
+    Console.WriteLine("\nAppuyez sur Entrée pour revenir au menu...");
+    Console.ReadLine();
+}
+
+static void ChercherCapitale(Dictionary<string, string> dico)
+{
+    Console.Clear();
+    Console.WriteLine("=== Recherche de capitale ===");
+    Console.Write("Entrez le nom du pays : ");
+    string pays = Console.ReadLine();
+
+    if (dico.ContainsKey(pays))
+    {
+        Console.WriteLine($"La capitale de {pays} est : {dico[pays]}");
+    }
+    else
+    {
+        Console.WriteLine($"Le pays \"{pays}\" n'est pas enregistré.");
+    }
+
+    Console.WriteLine("\nAppuyez sur Entrée pour revenir au menu...");
+    Console.ReadLine();
+}*/
+
+
+//30 Utiliser une boucle pour afficher les 5 premières lettres de l'alphabet.
+using System;
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        static void Main()
+        {
+            Console.WriteLine("Les 5 premières lettres de l'alphabet :");
+
+            for (char lettre = 'A'; lettre <= 'E'; lettre++)
+            {
+                Console.WriteLine(lettre);
+            }
+
+            Console.WriteLine("\nAppuyez sur Entrée pour quitter...");
+            Console.ReadLine();
+        }
+}
+}
