@@ -1591,6 +1591,86 @@ class Program
       }
    }*/
 
+//52 Créer un programme qui affiche un rectangle de caractères "X" de taille donnée par l'utilisateur.
+//Exemple, 4 donne : 
+//XXXX
+//XXXX
+//XXXX
+//XXXX
+
+/*class Program
+{
+    static void Main(string[] args)
+    {
+        int n = 4; 
+        for (int i = 0; i < n; i++)
+        {
+            Console.WriteLine(new string('x', n));
+        }
+    }
+}*/
+
+//53 Utiliser des boucles imbriquées pour afficher une pyramide de nombres.
+/*class Program
+{
+    static void Main()
+    {
+        Console.Write("Entrez le nombre de lignes de la pyramide : ");
+        int lignes = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= lignes; i++)
+        {
+            for (int j = 1; j <= i; j++)
+            {
+                Console.Write(j + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+*/
+
+
+
+/*
+ * //54 Afficher tous les éléments d'une liste de listes avec des boucles imbriquées. Exemple : 
+var elements = new List<List<object>> {
+    new List<object> { 5, 89, 79, 4, false },
+    new List<object> { 8, 9, 12, "azed", 7.7, 9 },
+    new List<object> { 7.12, "aba", 4689, true, 3 }*/
+
+
+
+//Exo 100 
+
+class Prgram
+{ 
+    static void Main()
+{
+    Console.Write("Chaîne 1 : ");
+    string s1 = Console.ReadLine();
+
+    Console.Write("Chaîne 2 : ");
+    string s2 = Console.ReadLine();
+
+    if (s1.Length != s2.Length)
+    {
+        Console.WriteLine("Erreur : les chaînes doivent avoir la même longueur.");
+        return;
+    }
+
+    int distance = 0;
+
+    for (int i = 0; i < s1.Length; i++)
+        if (s1[i] != s2[i])
+            distance++;
+
+        Console.WriteLine($"Distance de Hamming : {distance}");
+    }
+}
+
+
+
 
 
 
