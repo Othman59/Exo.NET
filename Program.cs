@@ -977,7 +977,9 @@ static void ChercherCapitale(Dictionary<string, string> dico)
 
 
 //30 Utiliser une boucle pour afficher les 5 premières lettres de l'alphabet.
-using System;
+
+/*using System;
+using System.Runtime.ConstrainedExecution;
 internal class Program
 {
     private static void Main(string[] args)
@@ -994,5 +996,623 @@ internal class Program
             Console.WriteLine("\nAppuyez sur Entrée pour quitter...");
             Console.ReadLine();
         }
+}*/
+
+//Exo 5 Parcours de collection variées *
+
+/*class Program
+{
+    static void Main()
+    {
+        // 1. Tableau d'entiers avec 5 valeurs
+        int[] nombres = { 5, 12, 8, 20, 3 };
+
+        Console.WriteLine("Contenu du tableau d'entiers :");
+
+        // Parcours avec la boucle foreach
+        foreach (int nombre in nombres)
+        {
+            Console.WriteLine(nombre);
+        }
+
+        Console.WriteLine("\nAppuyez sur Entrée pour continuer...");
+        Console.ReadLine();
+    }
 }
+*/
+
+/*static void AfficherSeparateur()
+{
+    Console.WriteLine(new string('-', 30));
+}*/
+
+//Exo 2 Fonction avec paramètres et retour
+
+/*using System;
+
+class Program
+{
+    // 1. Addition de deux entiers
+    static int Additionner(int a, int b)
+    {
+        return a + b;
+    }
+    static bool EstPair(int nombre)
+    {
+        return nombre % 2 == 0;
+    }
+    static double CalculerPrixTTC(double prixHT, double tauxTVA = 0.20)
+    {
+        return prixHT * (1 + tauxTVA);
+    }
+    static void Main()
+    {
+        Console.WriteLine("Additionner(5, 3) = " + Additionner(5, 3));
+        Console.WriteLine("Additionner(10, -4) = " + Additionner(10, -4));
+        Console.WriteLine("Additionner(0, 0) = " + Additionner(0, 0));
+
+        
+    }
 }
+
+*///Exo 3 Utiliser la surcharge de fonctions
+
+/*class Program
+{
+    // Surcharge 1 : Multiplie deux entiers
+    static int Multiplier(int a, int b)
+    {
+        return a * b;
+    }
+    static int Multiplier(int a, int b, int c)
+    {
+        return a * b * c;
+    }
+
+    static void Main()
+    {
+       
+        int resultat2 = Multiplier(2, 3);
+        Console.WriteLine(Multiplier(2, 3, 4));
+
+        Console.WriteLine("Appuyez sur Entrée pour quitter...");
+        Console.ReadLine();
+    }
+}
+
+*/
+
+//Exo 5 Fonctions statiques vs Fonctions d’instance
+
+/*static void BonjourGlobal()
+{
+    Console.WriteLine("Hello word");
+}
+//Methode non statique
+class Salutations
+{
+    public void BonjourGlobal(string prenom)
+    {
+        Console.WriteLine($"Bonjour, {prenom}");
+    }
+
+     static void Main()
+    {
+
+        // Appel de la méthode statique via le nom de la classe (sans créer d’objet)
+        
+            Console.WriteLine(); // ligne vide pour séparer
+
+            Salutations salut = new Salutations();
+            salut.BonjourGlobal("Alice");
+
+            Console.WriteLine("\nAppuyez sur Entrée pour quitter...");
+            Console.ReadLine();
+        }
+    }
+*/
+
+//ExO 6 : Fonctions locales en pratique
+
+// Fonction principale
+
+/*    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] tableauOriginal = { 5, 8, 13 };
+
+            AnalyseNombres(tableauOriginal);
+        }
+        static void AnalyseNombres(int[] tableau)
+        {
+            bool EstPair(int x)
+            {
+                return x % 2 == 0;
+            }
+            foreach (int n in tableau)
+            {
+                Console.WriteLine($"{n} est {((EstPair(n) == true) ? "pair" : "impaire")}");
+            }
+        }
+}*/
+
+//Exo 7 
+/*
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Déclaration d'une variable/lambda 
+        Func<int, int> triple = nombre => nombre  * 3;
+
+        List<int> nombres = new List<int> { 2, 5, 10 };
+
+        int resultat = triple(10);
+        Console.WriteLine($"triple(10) = {resultat}");
+        nombres.RemoveAll(x => x % 2 != 0);
+        Console.WriteLine(string.Join("-", nombres));
+
+
+    }
+}
+
+*/
+
+// Exo 8
+/*using System;
+
+class Program
+{
+    static void CalculerInfos(int a, int b, int c)
+    {
+        // Calcule la somme des 3 entiers
+        int somme = a + b + c;
+        Console.WriteLine($"Somme = {somme}");
+
+        // Vérifie si tous les nombres sont positifs
+        if (a > 0 && b > 0 && c > 0)
+        {
+            Console.WriteLine("Tous positifs");
+
+            // Calcule la moyenne
+            double moyenne = (a + b + c) / 3.0;
+            Console.WriteLine($"Moyenne = {moyenne}");
+        }
+    }
+
+}*/
+
+//Exo 9 
+
+/*using System;
+
+public class NotesUtil
+{
+    public List<int> Notes { get; set; }
+
+    public NotesUtil(List<int> notes)
+    {
+        Notes = notes ?? new List<int>();
+    }
+
+    public void AfficherStats()
+    {
+        if (Notes.Count == 0)
+        {
+            Console.WriteLine("Aucune note à analyser.");
+            return;
+        }
+
+        Console.WriteLine("===== Statistiques des notes =====");
+
+        double moyenne = CalculerMoyenne(Notes);
+        Console.WriteLine($"Moyenne : {moyenne:F2}");
+
+        int max = Notes.Max();
+        Console.WriteLine($"Note maximale : {max}");
+
+        var triees = Notes.OrderByDescending(n => n).ToList();
+        Console.WriteLine("Notes triées (décroissant) : " + string.Join(", ", triees));
+    }
+
+    // Méthode statique 
+    public static double CalculerMoyenne(List<int> notes)
+    {
+        if (notes == null || notes.Count == 0)
+            return 0;
+
+        return (double)notes.Sum() / notes.Count;
+    }
+}*/
+
+//Exo 36 Écrire une boucle qui affiche les nombres de 1 à 10, puis termine 
+
+/*using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Boucle for pour afficher les nombres de 1 à 10
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.WriteLine(i);
+        }
+        Console.WriteLine("Fin de la boucle.");
+    }
+}
+*/
+
+//Exo 37 Créer une boucle `while` qui décrémente un nombre à partir de 10 jusqu'à 0.
+
+/*using System;
+
+class Program
+{
+    static void Main()
+    {
+        int compteur = 10;
+
+        // Boucle while qui décrémente jusqu'à 0
+        while (compteur >= 0)
+        {
+            Console.WriteLine(compteur);
+            compteur--; // Décrémentation
+        }
+
+        Console.WriteLine("Fin de la boucle.");
+    }
+}*/
+
+//Exo 38 Demander un nombre à l'utilisateur et calculer sa factorielle avec une boucle `while`.
+
+/*using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Entrez un nombre entier positif : ");
+        int nombre = int.Parse(Console.ReadLine());
+
+        long factorielle = 1;
+        int compteur = nombre;
+
+        while (compteur > 1)
+        {
+            factorielle *= compteur;
+            compteur--;
+        }
+
+        Console.WriteLine($"La factorielle de {nombre} est : {factorielle}");
+    }
+}
+*/
+
+//Exo 39 Afficher les nombres pairs de 2 à 200 si ils sont divisible par 3 avec une boucle while.
+
+/*using System;
+
+class Program
+{
+    static void Main()
+    {
+        int nombre = 2;
+
+        while (nombre <= 200)
+        {
+            // Vérifie si le nombre est pair ET divisible par 3
+            if (nombre % 2 == 0 && nombre % 3 == 0)
+            {
+                Console.WriteLine(nombre);
+            }
+
+            nombre++;
+        }
+
+        Console.WriteLine("Fin de la boucle.");
+    }
+}
+*/
+
+//Exo 40 Créer une tableau d'une certaine longueur, demander à l'utilisateur des nombres et les affecter au tableau tant qu'il n'est pas rempli entièrement.
+
+/*using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Entrez la taille du tableau : ");
+        int taille = int.Parse(Console.ReadLine());
+
+        int[] tableau = new int[taille];
+        int index = 0;
+
+        while (index < taille)
+        {
+            Console.Write($"Entrez un nombre pour l'élément {index + 1} : ");
+            if (int.TryParse(Console.ReadLine(), out int valeur))
+            {
+                tableau[index] = valeur;
+                index++;
+            }
+            else
+            {
+                Console.WriteLine("Entrée invalide. Veuillez entrer un nombre entier.");
+            }
+        }
+
+        Console.WriteLine("\nContenu du tableau :");
+        foreach (int n in tableau)
+        {
+            Console.Write(n + " ");
+        }
+    }
+}*/
+
+//41  Utiliser une boucle pour afficher les nombres de 1 à 20, mais arrêter dès que vous atteignez 10.
+
+/*class Program
+{
+    static void Main()
+    {
+        int i = 1;
+
+        while (i <= 20)
+        {
+            Console.WriteLine(i);
+
+            if (i == 10)
+            {
+                Console.WriteLine("Arrêt à 10 !");
+                break; // Interrompt la boucle
+            }
+
+            i++;
+        }
+    }
+}*/
+
+
+//42.Créer une boucle qui demande un nombre et s'arrête si le nombre est 0.
+
+/*class Program
+{
+    static void Main()
+    {
+        int nombre;
+
+        do
+        {
+            Console.Write("Entrez un nombre (0 pour arrêter) : ");
+            nombre = int.Parse(Console.ReadLine());
+
+        } while (nombre != 0);
+
+        Console.WriteLine("Boucle terminée car vous avez entré 0.");
+    }
+}*/
+
+//43.Utiliser `continue` pour afficher uniquement les nombres impairs de 1 à 10.
+
+/*class Program
+{
+    static void Main()
+    {
+        for (int i = 1; i <= 10; i++)
+        {
+            if (i % 2 == 0)
+            {
+                continue;
+            }
+
+            Console.WriteLine(i); // Affiche les impairs
+        }
+    }
+}*/
+
+//44. Écrire une boucle qui affiche les nombres de 1 à 20, mais saute les multiples de 3.
+
+/*class Program
+{
+    static void Main()
+    {
+        for (int i = 1; i <= 20; i++)
+        {
+            if (i % 3 == 0)
+            {
+                continue; // Saute les multiples de 3
+            }
+
+            Console.WriteLine(i);
+        }
+    }
+}*/
+
+
+//45. Demander à l'utilisateur un nombre et afficher tous les nombres de 1 à ce nombre, sauf ceux divisibles par 4.
+
+/*class Program
+{
+    static void Main()
+    {
+        Console.Write("Entrez un nombre : ");
+        int limite = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= limite; i++)
+        {
+            if (i % 4 == 0)
+            {
+                continue;
+            }
+
+            Console.WriteLine(i);
+        }
+    }
+}*/
+
+//46.Créer une boucle qui affiche les éléments d'un tableau mais s'arrête dès qu'elle rencontre un élément spécifique.
+
+/*class Program
+{
+    static void Main()
+    {
+        string[] mots = { "chien", "chat", "lapin", "souris", "arbre", "voiture" };
+
+        foreach (string mot in mots)
+        {
+            if (mot == "stop")
+            {
+                Console.WriteLine("Mot d'arrêt rencontré. Fin de boucle.");
+                break; // Arrête la boucle
+            }
+
+            Console.WriteLine(mot);
+        }
+    }
+}*/
+
+//47. Utiliser `break` pour quitter une boucle infinie après 5 itérations.
+/*class Program
+{
+    static void Main()
+    {
+        int compteur = 0;
+
+        while (true)
+        {
+            compteur++;
+            Console.WriteLine($"Itération {compteur}");
+
+            if (compteur == 5)
+            {
+                break; // Quitte la boucle après 5 itérations
+            }
+        }
+
+        Console.WriteLine("Boucle terminée.");
+    }
+}*/
+
+// 48. Utiliser `continue` pour ignorer les lettres 'a' et 'e' lors de l'affichage des lettres d'un mot.
+/*class Program
+{
+    static void Main()
+    {
+        Console.Write("Entrez un mot : ");
+        string mot = Console.ReadLine();
+
+        foreach (char lettre in mot)
+        {
+            if (lettre == 'a' || lettre == 'e')
+            {
+                continue; // Ignore les lettres 'a' et 'e'
+            }
+
+            Console.Write(lettre);
+        }
+
+        Console.WriteLine(); // Pour aller à la ligne après l'affichage
+    }
+}*/
+
+//49. Écrire une boucle qui demande à l'utilisateur de saisir un mot, mais qui s'arrête dès qu'il entre "stop".
+
+/*class Program
+{
+    static void Main()
+    {
+        string mot;
+
+        while (true)
+        {
+            Console.Write("Entrez un mot (ou 'stop' pour quitter) : ");
+            mot = Console.ReadLine();
+
+            if (mot.ToLower() == "stop")
+            {
+                Console.WriteLine("Arrêt du programme.");
+                break;
+            }
+
+            Console.WriteLine($"Vous avez saisi : {mot}");
+        }
+    }
+}*/
+
+/*//50 Afficher les éléments d’une liste, arrêter la boucle si un même élément apparaît une deuxième fois.
+class Program
+{
+    static void Main()
+    {
+        List<string> elements = new List<string> { "chat", "chien", "oiseau", "chat", "lapin" };
+        HashSet<string> dejaVus = new HashSet<string>();
+
+        foreach (string element in elements)
+        {
+            if (dejaVus.Contains(element))
+            {
+                Console.WriteLine($"Élément répété trouvé : {element}. Arrêt de la boucle.");
+                break;
+            }
+
+            Console.WriteLine(element);
+            dejaVus.Add(element);
+        }
+    }
+}*/
+
+// 51. Utiliser des boucles imbriquées pour afficher une pyramide de nombres.
+/*class Program 
+{
+    static void Main()
+    {
+        int lignes = 5;
+
+        for (int i = 1; i <= lignes; i++)
+        {
+            for (int espace = 1; espace <= lignes - i; espace++)
+            {
+                Console.Write(" ");
+            }
+
+            // Affiche les nombres croissants de 1 à i
+            for (int j = 1; j <= i; j++)
+            {
+                Console.Write(j);
+            }
+
+            Console.WriteLine();
+        }
+      }
+   }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
